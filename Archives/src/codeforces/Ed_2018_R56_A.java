@@ -1,15 +1,16 @@
+package codeforces;
 import java.io.*;    //PrintWriter
 import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class R523_Div2_C
+public class Ed_2018_R56_A
 {	
 	FastReader in;
 	PrintWriter out;
 	
 	public static void main(String[] args)  {
-		new R523_Div2_C().run();
+		new Ed_2018_R56_A().run();
 	}
 	
 	void run()
@@ -23,18 +24,11 @@ public class R523_Div2_C
 	void solve()
 	{
 		int n = in.nextInt();
-		int k = in.nextInt();
-		
-		int[] a = new int[n];
-		for (int i = 0; i < n; i++) 
-			a[i] = in.nextInt();
-		
-		String st = in.next();
-		
-		StringBuilder sb = new StringBuilder(st + k);
-		sb.append("\r\n");
-		
-		out.println(sb);		
+		for (int i = 0; i < n; i++) { 
+			int x = in.nextInt();
+			int ans = x / 2;
+			out.println(ans);
+		}
 	}
 
 	//-----------------------------------------------------

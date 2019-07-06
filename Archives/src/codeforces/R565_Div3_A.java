@@ -1,18 +1,16 @@
+package codeforces;
 import java.io.*;    //PrintWriter
 import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class HC_2018_QR_A
+public class R565_Div3_A
 {	
 	FastReader in;
 	PrintWriter out;
-	//final String PROBLEM_NAME = "A_ex";
-	final String PROBLEM_NAME = "A";
-	//append "_in.txt" and "_out.txt"
 	
-	public static void main(String[] args) throws IOException  {
-		new HC_2018_QR_A().runWithFiles();
+	public static void main(String[] args)  {
+		new R565_Div3_A().run();
 	}
 	
 	void run()
@@ -23,55 +21,45 @@ public class HC_2018_QR_A
 		out.close();
 	}
 	
-	void runWithFiles() throws IOException  {
-		in = new FastReader(new File("src/" + PROBLEM_NAME + "_in.txt"));
-		out = new PrintWriter(new File("src/" + PROBLEM_NAME + "_out.txt"));
-
-		solve();
-		out.close();
-	}
-	
 	void solve()
 	{
-		int T = in.nextInt();  
-
-		for (int tc = 1; tc <= T; tc++)
-		{
-			int n = in.nextInt();
-			int k = in.nextInt();
-			long v = in.nextLong();
-			
-			String[] a = new String[n];
-			for (int i = 0; i < n; i++) 
-				a[i] = in.next();
-			
-			int st = (int)((k * (v-1)) % n);
-			int max = st + (k-1);
-			if (max >= n) max = n-1;			
-			
-			StringBuilder s = new StringBuilder();
-			for (int i = st; i <= max; i++) {				
-				if (s.length() > 0) s.append(" ");
-				s.append(a[i]);
+		int q = in.nextInt();
+		for (int i = 0; i < q; i++) { 
+			long n = in.nextLong();
+			int cnt = 0;
+			while (n > 1) {
+				if (n % 2 == 0) {
+					n /= 2;
+				} else if (n % 3 == 0) {
+					n /= 3;
+					n *= 2;
+				}
+				else if (n % 5 == 0) {
+					n /= 5;
+					n *= 4;
+				}
+				else {
+					cnt = -1;
+					break;
+				}		
+				cnt++;
 			}
-			
-			String ans = s.toString();
-			
-			s = new StringBuilder();
-			for (int i = 0; i < (st + (k-1) - max); i++) {
-				s.append(a[i]); 
-				s.append(" ");
-			}
-			
-			ans = s.toString() + ans;
-			
-			System.out.println("Case #" + tc + ": " + ans);
-			out.println("Case #" + tc + ": " + ans);
-		}
+			out.println(cnt);
+		}	
 	}
 
 	//-----------------------------------------------------
-
+	void runWithFiles() {
+		in = new FastReader(new File("input.txt"));
+		try {
+			out = new PrintWriter(new File("output.txt"));
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		solve();
+		out.close();
+	}
 	
 	class FastReader
 	{

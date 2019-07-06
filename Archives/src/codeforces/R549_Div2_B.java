@@ -1,15 +1,16 @@
+package codeforces;
 import java.io.*;    //PrintWriter
 import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class R523_Div2_D
+public class R549_Div2_B
 {	
 	FastReader in;
 	PrintWriter out;
 	
 	public static void main(String[] args)  {
-		new R523_Div2_D().run();
+		new R549_Div2_B().run();
 	}
 	
 	void run()
@@ -20,21 +21,42 @@ public class R523_Div2_D
 		out.close();
 	}
 	
+	// Fails on test input: 389041744
+	// Outputs 100442349 instead of 102036672
+	// 3x7x9x9x9x9x9x9x9 instead of 3x8x8x9x9x9x9x9x9
 	void solve()
 	{
 		int n = in.nextInt();
-		int k = in.nextInt();
+		String nst = n + "";
+		int prod = 1;
+		boolean all9 = true; //nst.length() > 2;
+		for (int i = 2; i < nst.length(); i++) {
+			prod *= 9;
+			n /= 10;
+			if (nst.charAt(i) != '9') all9 = false;
+		} 
 		
-		int[] a = new int[n];
-		for (int i = 0; i < n; i++) 
-			a[i] = in.nextInt();
+		if (n <= 9) {
+			prod *= n;
+		} else {
+			if (!all9) n--;
+			int u = n % 10;
+			int t = n / 10;
+			if (t < 1) t = 1;
+			if (u < 1) u = 1;
+			int max = t * u;
+			if (u < 9) {
+				u = 9;
+				t--;
+				if (t < 1) t = 1;
+				max = Math.max(max, t * u);
+			}
+			if (max > 0) {
+				prod *= max;
+			}
+		}
 		
-		String st = in.next();
-		
-		StringBuilder sb = new StringBuilder(st + k);
-		sb.append("\r\n");
-		
-		out.println(sb);		
+		out.println(prod);		
 	}
 
 	//-----------------------------------------------------

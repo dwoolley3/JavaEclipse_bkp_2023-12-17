@@ -1,18 +1,16 @@
+package codeforces;
 import java.io.*;    //PrintWriter
 import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class HC_2018_QR_C
+public class R557_Div2_B
 {	
 	FastReader in;
 	PrintWriter out;
-	//final String PROBLEM_NAME = "C_ex";
-	final String PROBLEM_NAME = "C";
-	//append "_in.txt" and "_out.txt"
 	
-	public static void main(String[] args) throws IOException  {
-		new HC_2018_QR_C().runWithFiles();
+	public static void main(String[] args)  {
+		new R557_Div2_B().run();
 	}
 	
 	void run()
@@ -23,47 +21,60 @@ public class HC_2018_QR_C
 		out.close();
 	}
 	
-	void runWithFiles() throws IOException  {
-		in = new FastReader(new File("src/" + PROBLEM_NAME + "_in.txt"));
-		out = new PrintWriter(new File("src/" + PROBLEM_NAME + "_out.txt"));
-
-		solve();
-		out.close();
-	}
+	int[][] a;
+	int[][] b;
+	int n, m;
 	
 	void solve()
 	{
-		int T = in.nextInt();  
-
-		for (int tc = 1; tc <= T; tc++)
-		{
-			String s = in.next();
-			int n = s.length();
-			
-			String ans = "Impossible";
-			boolean ok = false;
-			for (int i = 1; i < n; i++)
-				if (s.charAt(0) != s.charAt(i)) ok = true;
-			
-			if (ok) {
-			for (int i = 1; i < n-1; i++) {
-				if (s.charAt(i) == s.charAt(0)) {
-					if (!s.substring(i+1).startsWith(s.substring(1,i+1))) {
-						ans = s.substring(0, i) + s;
-						break;
-					}
-
+		n = in.nextInt();
+		m = in.nextInt();
+		
+		a = new int[n+1][m+1];
+		for (int i = 1; i <= n; i++) 
+			for (int j = 1; j <= m; j++)
+				a[i][j] = in.nextInt();
+		
+		b = new int[n+1][m+1];
+		for (int i = 1; i <= n; i++) 
+			for (int j = 1; j <= m; j++) {
+				b[i][j] = in.nextInt();
+				if (b[i][j] < a[i][j]) {
+					int x = a[i][j]; a[i][j] = b[i][j]; b[i][j] = x;
 				}
 			}
+		
+		boolean pos = true;
+		for (int i = 1; i <= n && pos; i++)
+			for (int j = 1; j <= m && pos; j++) {
+				pos = check(i,j);
 			}
-
-			System.out.println("Case #" + tc + ": " + ans);
-			out.println("Case #" + tc + ": " + ans);
-		}
+		
+		out.println(pos ? "Possible" : "Impossible");		
+	}
+	
+	private boolean check(int r, int c) {
+		if (a[r][c-1] < a[r][c] && a[r-1][c] < a[r][c]
+		&& b[r][c-1] < b[r][c] && b[r-1][c] < b[r][c]
+		&& (c == m || (a[r][c] < a[r][c+1] && b[r][c] < b[r][c+1]))
+		&& (r == n || a[r][c] < a[r+1][c]  && b[r][c] < b[r+1][c]))
+		return true;
+		
+		return false;
 	}
 
 	//-----------------------------------------------------
-
+	void runWithFiles() {
+		in = new FastReader(new File("input.txt"));
+		try {
+			out = new PrintWriter(new File("output.txt"));
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		solve();
+		out.close();
+	}
 	
 	class FastReader
 	{

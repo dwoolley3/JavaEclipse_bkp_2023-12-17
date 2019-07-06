@@ -1,18 +1,16 @@
+package codeforces;
 import java.io.*;    //PrintWriter
 import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class HC_2018_QR_B
+public class R535_Div3_C
 {	
 	FastReader in;
 	PrintWriter out;
-	//final String PROBLEM_NAME = "B_ex";
-	final String PROBLEM_NAME = "B";
-	//append "_in.txt" and "_out.txt"
 	
-	public static void main(String[] args) throws IOException  {
-		new HC_2018_QR_B().runWithFiles();
+	public static void main(String[] args)  {
+		new R535_Div3_C().run();
 	}
 	
 	void run()
@@ -23,46 +21,47 @@ public class HC_2018_QR_B
 		out.close();
 	}
 	
-	void runWithFiles() throws IOException  {
-		in = new FastReader(new File("src/" + PROBLEM_NAME + "_in.txt"));
-		out = new PrintWriter(new File("src/" + PROBLEM_NAME + "_out.txt"));
-
-		solve();
-		out.close();
-	}
-	
 	void solve()
 	{
-		int T = in.nextInt();  
-
-		for (int tc = 1; tc <= T; tc++)
-		{
-			int n = in.nextInt();
-			//P0 result always = 1, since raised to 0 power
-			//Only way to get total equal to 0 is for Pn result to be 0 
-			//and Pn-1 result to be 1 (not 0).
-			//P0 result will be 1 for x = 0;
-			//P1 result will be 0 for x = 0;
-			//P2 result will be 1 for x = 0;
-			//P3 result will be 0 for x = 0;
-			//P4 result will be 1 for x = 0;
-			int[] p = new int[n+1];
-			for (int i = 0; i <= n; i++) 
-				p[i] = in.nextInt();
-			
-			int ans = n%2;
-			
-			System.out.println("Case #" + tc + ": " + ans);
-			if (ans == 1)
-				System.out.println(0.0);
-			out.println("Case #" + tc + ": " + ans);
-			if (ans == 1)
-				out.println(0.0);
+		int n = in.nextInt();
+		String st = in.next();
+		String[] pat = {"BRG", "BGR", "RBG", "RGB", "GRB", "GBR"};
+		
+		int min = Integer.MAX_VALUE;
+		int minPatInd = -1;
+		
+		for (int i = 0; i < 6; i++) {
+			int dif = 0;
+			for (int j = 0; j < n; j++) {
+				if (st.charAt(j) != pat[i].charAt(j % 3)) 
+					dif++;
+			}
+			if (dif < min) {
+				min = dif;
+				minPatInd = i;
+			}
 		}
+				
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < n; i++)
+			sb.append(pat[minPatInd].charAt(i%3));
+		
+		out.println(min);
+		out.println(sb);		
 	}
 
 	//-----------------------------------------------------
-
+	void runWithFiles() {
+		in = new FastReader(new File("input.txt"));
+		try {
+			out = new PrintWriter(new File("output.txt"));
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		solve();
+		out.close();
+	}
 	
 	class FastReader
 	{

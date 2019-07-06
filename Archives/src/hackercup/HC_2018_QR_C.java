@@ -1,15 +1,19 @@
+package hackercup;
 import java.io.*;    //PrintWriter
 import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class R523_Div2_F
+public class HC_2018_QR_C
 {	
 	FastReader in;
 	PrintWriter out;
+	//final String PROBLEM_NAME = "C_ex";
+	final String PROBLEM_NAME = "C";
+	//append "_in.txt" and "_out.txt"
 	
-	public static void main(String[] args)  {
-		new R523_Div2_F().run();
+	public static void main(String[] args) throws IOException  {
+		new HC_2018_QR_C().runWithFiles();
 	}
 	
 	void run()
@@ -20,35 +24,47 @@ public class R523_Div2_F
 		out.close();
 	}
 	
-	void solve()
-	{
-		int n = in.nextInt();
-		int k = in.nextInt();
-		
-		int[] a = new int[n];
-		for (int i = 0; i < n; i++) 
-			a[i] = in.nextInt();
-		
-		String st = in.next();
-		
-		StringBuilder sb = new StringBuilder(st + k);
-		sb.append("\r\n");
-		
-		out.println(sb);		
-	}
+	void runWithFiles() throws IOException  {
+		in = new FastReader(new File("src/" + PROBLEM_NAME + "_in.txt"));
+		out = new PrintWriter(new File("src/" + PROBLEM_NAME + "_out.txt"));
 
-	//-----------------------------------------------------
-	void runWithFiles() {
-		in = new FastReader(new File("input.txt"));
-		try {
-			out = new PrintWriter(new File("output.txt"));
-		} 
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
 		solve();
 		out.close();
 	}
+	
+	void solve()
+	{
+		int T = in.nextInt();  
+
+		for (int tc = 1; tc <= T; tc++)
+		{
+			String s = in.next();
+			int n = s.length();
+			
+			String ans = "Impossible";
+			boolean ok = false;
+			for (int i = 1; i < n; i++)
+				if (s.charAt(0) != s.charAt(i)) ok = true;
+			
+			if (ok) {
+			for (int i = 1; i < n-1; i++) {
+				if (s.charAt(i) == s.charAt(0)) {
+					if (!s.substring(i+1).startsWith(s.substring(1,i+1))) {
+						ans = s.substring(0, i) + s;
+						break;
+					}
+
+				}
+			}
+			}
+
+			System.out.println("Case #" + tc + ": " + ans);
+			out.println("Case #" + tc + ": " + ans);
+		}
+	}
+
+	//-----------------------------------------------------
+
 	
 	class FastReader
 	{

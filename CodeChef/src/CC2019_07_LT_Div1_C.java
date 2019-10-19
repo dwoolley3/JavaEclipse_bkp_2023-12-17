@@ -4,13 +4,13 @@ import java.util.*;  //StringTokenizer, ArrayList
 
 
 //For Code Chef, do not precede class Program with "public"
-class CC2017_12_LT_E
+class CC2019_07_LT_Div1_C
 {	
 	FastReader in;
 	PrintWriter out;
 	
-	public static void main(String[] args)  {
-		new CC2017_12_LT_E().run();
+	public static void main(String[] args) throws java.lang.Exception {
+		new CC2019_07_LT_Div1_C().run();
 	}
 	
 	void run()

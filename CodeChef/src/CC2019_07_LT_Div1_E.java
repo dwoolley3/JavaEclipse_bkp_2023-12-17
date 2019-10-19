@@ -3,13 +3,14 @@ import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class R565_Div3_G
+//For Code Chef, do not precede class Program with "public"
+class CC2019_07_LT_Div1_E
 {	
 	FastReader in;
 	PrintWriter out;
 	
-	public static void main(String[] args)  {
-		new R565_Div3_G().run();
+	public static void main(String[] args)  throws java.lang.Exception {
+		new CC2019_07_LT_Div1_E().run();
 	}
 	
 	void run()
@@ -22,19 +23,23 @@ public class R565_Div3_G
 	
 	void solve()
 	{
-		int n = in.nextInt();
-		int k = in.nextInt();
-		
-		int[] a = new int[n];
-		for (int i = 0; i < n; i++) 
-			a[i] = in.nextInt();
-		
-		String st = in.next();
-		
-		StringBuilder sb = new StringBuilder(st + k);
-		sb.append("\r\n");
-		
-		out.println(sb);		
+        int T = in.nextInt();
+        for (int t = 0; t < T; t++)
+        {
+			int n = in.nextInt();	
+			int k = in.nextInt();
+				
+			int[] a = new int[n];
+			for (int i = 0; i < n; i++) 
+				a[i] = in.nextInt();
+			
+			String s = in.next();
+			
+			StringBuilder sb = new StringBuilder(s + k);
+			sb.append("\r\n");
+			
+			out.println(sb);	
+        }		
 	}
 
 	//-----------------------------------------------------

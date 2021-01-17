@@ -1,8 +1,8 @@
 package topcoder;
-import java.util.*;
-import java.util.regex.*;
-import java.text.*;
-import java.math.*;
+//import java.util.*;
+//import java.util.regex.*;
+//import java.text.*;
+//import java.math.*;
 
 
 public class SRM768_Div2_L2_BinaryDistance

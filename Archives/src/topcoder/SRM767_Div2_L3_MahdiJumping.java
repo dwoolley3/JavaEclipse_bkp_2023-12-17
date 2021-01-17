@@ -1,15 +1,16 @@
 package topcoder;
-import java.util.*;
-import java.util.regex.*;
-import java.text.*;
-import java.math.*;
+//import java.util.*;
+//import java.util.regex.*;
+//import java.text.*;
+//import java.math.*;
+
+// Not yet working
 
 
 public class SRM767_Div2_L3_MahdiJumping
 {
 	public long minDis(int n, int A, int B, int a, int b)
 	{
-		int[] jumpFromIndTo = new int[n];
 		long[] min = new long[n];
 		for (int i = 0; i < n-1; i++) {
 			min[i] = (n-1 - i) * 1L * a;

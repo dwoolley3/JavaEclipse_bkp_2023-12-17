@@ -1,15 +1,14 @@
 package topcoder;
-import java.util.*;
-import java.util.regex.*;
-import java.text.*;
-import java.math.*;
+//import java.util.*;
+//import java.util.regex.*;
+//import java.text.*;
+//import java.math.*;
 
 
 public class SRM768_Div2_L2_ReallyMagicSquare
 {
 	public int[] reconstruct(int[] topRow, int[] mainDiagonal)
 	{
-		int mainSum = 0;
 		int n = topRow.length;
 		if (n == 1) return topRow;
 		int[][] a = new int[n][n];

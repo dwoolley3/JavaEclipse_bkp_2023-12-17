@@ -1,21 +1,19 @@
+package topcoder;
 //import java.util.*;
 //import java.util.regex.*;
 //import java.text.*;
 //import java.math.*;
 
 
-public class nim_SRM785_div2_L3_EllysNimDiv2
+public class SRM800_Div2_L4_MinMaxGame
 {
-	public int getMin(int[] A)
+	public int lastNumber(int[] A)
 	{
-		// If all xor of A[..] is 0 then the person will lose
-		int n = A.length;		
-		int x = A[0];
-		for (int i = 1; i < n; i++) {
-			x ^= A[i];
+		int n = A.length;
+		if (n % 2 == 1) {
+			return Math.max(A[0], A[n-1]);
 		}
-		
-		return x;
+		return Math.min (A[0], A[n-1]);
 	}
 	
 	// BEGIN KAWIGIEDIT TESTING
@@ -30,11 +28,11 @@ public class nim_SRM785_div2_L3_EllysNimDiv2
 		}
 		System.out.print("}");
 		System.out.println("]");
-		nim_SRM785_div2_L3_EllysNimDiv2 obj;
+		SRM800_Div2_L4_MinMaxGame obj;
 		int answer;
-		obj = new nim_SRM785_div2_L3_EllysNimDiv2();
+		obj = new SRM800_Div2_L4_MinMaxGame();
 		long startTime = System.currentTimeMillis();
-		answer = obj.getMin(p0);
+		answer = obj.lastNumber(p0);
 		long endTime = System.currentTimeMillis();
 		boolean res;
 		res = true;
@@ -69,45 +67,21 @@ public class nim_SRM785_div2_L3_EllysNimDiv2
 		int p1;
 		
 		// ----- test 0 -----
-		p0 = new int[]{42,13,123,55,666,17};
-		p1 = 480;
-		all_right = KawigiEdit_RunTest(0, p0, true, p1) && all_right;
-		// ------------------
-		
-		// ----- test 0 -----
-		p0 = new int[]{42,24,512,128,672,18};
-		p1 = 0;
+		p0 = new int[]{3,2,1};
+		p1 = 3;
 		all_right = KawigiEdit_RunTest(0, p0, true, p1) && all_right;
 		// ------------------
 		
 		// ----- test 1 -----
-		p0 = new int[]{1,1};
-		p1 = 0;
+		p0 = new int[]{2,5,3,7};
+		p1 = 2;
 		all_right = KawigiEdit_RunTest(1, p0, true, p1) && all_right;
 		// ------------------
 		
 		// ----- test 2 -----
-		p0 = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-		p1 = 4;
+		p0 = new int[]{4,5,1,6,5};
+		p1 = 5;
 		all_right = KawigiEdit_RunTest(2, p0, true, p1) && all_right;
-		// ------------------
-		
-		// ----- test 3 -----
-		p0 = new int[]{371,740,211,798,82,385,979,389,31,667,541,561,471};
-		p1 = 42;
-		all_right = KawigiEdit_RunTest(3, p0, true, p1) && all_right;
-		// ------------------
-		
-		// ----- test 4 -----
-		p0 = new int[]{769,727,657,924,879,674,652,995,947,896,869,553,954,974,681,768,913};
-		p1 = 666;
-		all_right = KawigiEdit_RunTest(4, p0, true, p1) && all_right;
-		// ------------------
-		
-		// ----- test 5 -----
-		p0 = new int[]{543,230,421,415,271,962,677,373,951,114,379,15,211,955,66,573,982,296,730,591,750,877,224,186,398,84,542,770,288,78,373,417,476,968,564,565,740,377,633,287,111,823};
-		p1 = 44;
-		all_right = KawigiEdit_RunTest(5, p0, true, p1) && all_right;
 		// ------------------
 		
 		if (all_right) {

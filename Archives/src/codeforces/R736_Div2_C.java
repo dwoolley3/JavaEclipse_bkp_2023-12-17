@@ -1,0 +1,133 @@
+package codeforces;
+import java.io.*;    //PrintWriter
+import java.math.*;  //BigInteger, BigDecimal
+import java.util.*;  //StringTokenizer, ArrayList
+
+
+public class R736_Div2_C
+{	
+	FastReader in;
+	PrintWriter out;
+	
+	public static void main(String[] args)  {
+		new R736_Div2_C().run();
+	}
+	
+	void run()
+	{		
+		in = new FastReader(System.in);
+		out = new PrintWriter(System.out);
+		solve();
+		out.close();
+	}
+	
+	void solve()
+	{
+		int n = in.nextInt();
+		int m = in.nextInt();
+		int[] a = new int[n+1];
+		
+		for (int i = 0; i < m; ++i)
+		{
+			int u = in.nextInt();
+			int v = in.nextInt();
+			int min = Math.min(u,v);
+			a[min]++;
+		}
+		
+		int alone = 0;
+		for (int i = 1; i<= n; i++) {
+			if (a[i] == 0) alone++;
+		}
+
+		int q = in.nextInt();
+		while (q-- > 0) {
+			int f = in.nextInt();
+			if (f == 1) {
+				int u = in.nextInt();
+				int v = in.nextInt();
+				int min = Math.min(u,v);
+				if (a[min] == 0) alone--;
+				a[min]++;				
+			} else if (f == 2) {
+				int u = in.nextInt();
+				int v = in.nextInt();
+				int min = Math.min(u,v);
+				a[min]--;
+				if (a[min] == 0) alone++;
+			} else { // f==3
+				out.println(alone);
+			}
+		}
+		
+	}
+
+	//-----------------------------------------------------
+	void runWithFiles() {
+		in = new FastReader(new File("input.txt"));
+		try {
+			out = new PrintWriter(new File("output.txt"));
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		solve();
+		out.close();
+	}
+	
+	class FastReader
+	{
+	    BufferedReader br;
+	    StringTokenizer tokenizer;
+	    
+	    public FastReader(InputStream stream)
+	    {
+	        br = new BufferedReader(new InputStreamReader(stream));
+	        tokenizer = null;
+	    }
+		public FastReader(File f) {
+			try {
+				br = new BufferedReader(new FileReader(f));
+				tokenizer = null;
+			}
+			catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+	    
+	    private String next() {
+	        while (tokenizer == null || !tokenizer.hasMoreTokens())
+	            try {
+	            	tokenizer = new StringTokenizer(br.readLine());
+	            }
+	            catch (IOException e) {
+	                throw new RuntimeException(e);
+	            }
+	        return tokenizer.nextToken();
+	    }
+		public String nextLine() {
+			try	{
+				return br.readLine();
+			}
+			catch(Exception e) {
+				throw(new RuntimeException());
+			}
+		}
+
+	    int nextInt() {
+	        return Integer.parseInt(next());
+	    }
+	    long nextLong() {
+	        return Long.parseLong(next());
+	    }
+	    double nextDouble() {
+	        return Double.parseDouble(next());
+	    }	    
+	    BigInteger nextBigInteger() {
+	        return new BigInteger(next());
+	    }
+	    BigDecimal nextBigDecimal() {
+	        return new BigDecimal(next());
+	    }
+	}
+}

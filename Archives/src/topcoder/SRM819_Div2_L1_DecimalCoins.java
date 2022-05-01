@@ -1,21 +1,23 @@
+package topcoder;
 //import java.util.*;
 //import java.util.regex.*;
 //import java.text.*;
 //import java.math.*;
 
 
-public class nim_SRM785_div2_L3_EllysNimDiv2
+public class SRM819_Div2_L1_DecimalCoins
 {
-	public int getMin(int[] A)
+	public int pay(int[] coins)
 	{
-		// If all xor of A[..] is 0 then the person will lose
-		int n = A.length;		
-		int x = A[0];
+		int n = 7, den = 1, ans = coins[0] + 1;
 		for (int i = 1; i < n; i++) {
-			x ^= A[i];
+			den *= 10;
+			if (ans < den) {
+				return ans;
+			}
+			ans += (coins[i] * den);
 		}
-		
-		return x;
+		return ans; 
 	}
 	
 	// BEGIN KAWIGIEDIT TESTING
@@ -30,11 +32,11 @@ public class nim_SRM785_div2_L3_EllysNimDiv2
 		}
 		System.out.print("}");
 		System.out.println("]");
-		nim_SRM785_div2_L3_EllysNimDiv2 obj;
+		SRM819_Div2_L1_DecimalCoins obj;
 		int answer;
-		obj = new nim_SRM785_div2_L3_EllysNimDiv2();
+		obj = new SRM819_Div2_L1_DecimalCoins();
 		long startTime = System.currentTimeMillis();
-		answer = obj.getMin(p0);
+		answer = obj.pay(p0);
 		long endTime = System.currentTimeMillis();
 		boolean res;
 		res = true;
@@ -67,47 +69,65 @@ public class nim_SRM785_div2_L3_EllysNimDiv2
 		
 		int[] p0;
 		int p1;
-		
+			
 		// ----- test 0 -----
-		p0 = new int[]{42,13,123,55,666,17};
-		p1 = 480;
-		all_right = KawigiEdit_RunTest(0, p0, true, p1) && all_right;
-		// ------------------
-		
-		// ----- test 0 -----
-		p0 = new int[]{42,24,512,128,672,18};
-		p1 = 0;
+		p0 = new int[]{7,3,1,0,0,0,0};
+		p1 = 8;
 		all_right = KawigiEdit_RunTest(0, p0, true, p1) && all_right;
 		// ------------------
 		
 		// ----- test 1 -----
-		p0 = new int[]{1,1};
-		p1 = 0;
+		p0 = new int[]{123,1,0,0,0,0,0};
+		p1 = 134;
 		all_right = KawigiEdit_RunTest(1, p0, true, p1) && all_right;
 		// ------------------
 		
 		// ----- test 2 -----
-		p0 = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-		p1 = 4;
+		p0 = new int[]{0,1,2,3,4,5,6};
+		p1 = 1;
 		all_right = KawigiEdit_RunTest(2, p0, true, p1) && all_right;
 		// ------------------
 		
 		// ----- test 3 -----
-		p0 = new int[]{371,740,211,798,82,385,979,389,31,667,541,561,471};
-		p1 = 42;
+		p0 = new int[]{8,8,8,8,8,8,8};
+		p1 = 9;
+		all_right = KawigiEdit_RunTest(3, p0, true, p1) && all_right;
+		// ------------------
+		
+		// ----- test 3 -----
+		p0 = new int[]{9,8,8,8,8,8,8};
+		p1 = 90;
+		all_right = KawigiEdit_RunTest(3, p0, true, p1) && all_right;
+		// ------------------
+		
+		// ----- test 3 -----
+		p0 = new int[]{9,9,8,8,8,8,8};
+		p1 = 900;
 		all_right = KawigiEdit_RunTest(3, p0, true, p1) && all_right;
 		// ------------------
 		
 		// ----- test 4 -----
-		p0 = new int[]{769,727,657,924,879,674,652,995,947,896,869,553,954,974,681,768,913};
-		p1 = 666;
+		p0 = new int[]{9,9,9,9,9,9,9};
+		p1 = 10000000;
 		all_right = KawigiEdit_RunTest(4, p0, true, p1) && all_right;
 		// ------------------
 		
-		// ----- test 5 -----
-		p0 = new int[]{543,230,421,415,271,962,677,373,951,114,379,15,211,955,66,573,982,296,730,591,750,877,224,186,398,84,542,770,288,78,373,417,476,968,564,565,740,377,633,287,111,823};
-		p1 = 44;
-		all_right = KawigiEdit_RunTest(5, p0, true, p1) && all_right;
+		// ----- test 3 -----
+		p0 = new int[]{9,20,8,8,8,8,8};
+		p1 = 9010;
+		all_right = KawigiEdit_RunTest(3, p0, true, p1) && all_right;
+		// ------------------
+		
+		// ----- test 4 -----
+		p0 = new int[]{1000,1000,1000,1000,1000,1000,1000};
+		p1 = 1111111001;
+		all_right = KawigiEdit_RunTest(4, p0, true, p1) && all_right;
+		// ------------------
+		
+		// ----- test 4 -----
+		p0 = new int[]{1000,1000,1000,0,1000,1000,1000};
+		p1 = 1110111001;
+		all_right = KawigiEdit_RunTest(4, p0, true, p1) && all_right;
 		// ------------------
 		
 		if (all_right) {

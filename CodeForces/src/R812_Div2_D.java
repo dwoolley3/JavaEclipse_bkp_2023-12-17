@@ -1,16 +1,15 @@
-package codejam;
 import java.io.*;    //PrintWriter
 import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class GCJ_2022_QR_C_d1000000_Solution
+public class R812_Div2_D
 {	
 	FastReader in;
 	PrintWriter out;
 	
 	public static void main(String[] args)  {
-		new GCJ_2022_QR_C_d1000000_Solution().run();
+		new R812_Div2_D().run();
 	}
 	
 	void run()
@@ -23,27 +22,21 @@ public class GCJ_2022_QR_C_d1000000_Solution
 	
 	void solve()
 	{
-		int T = in.nextInt();  
-
-		for (int tc = 1; tc <= T; tc++)
-		{
+		int t = in.nextInt();
+		for (int T = 0; T < t; T++) {
 			int n = in.nextInt();
+			int k = in.nextInt();
 			
-			int[] s = new int[n];
-			for (int i = 0; i < n; i++) {
-				s[i] = in.nextInt();
-			}
-			Arrays.sort(s);
-			int cnt = 0;
-			for (int i = 0; i < n; i++) {
-				if (s[i] > cnt) {
-					cnt++;
-				}
-			}
+			int[] a = new int[n];
+			for (int i = 0; i < n; i++) 
+				a[i] = in.nextInt();
 			
-			String ans = "" + cnt;
-
-			out.println("Case #" + tc + ": " + ans);
+			String st = in.next();
+			
+			StringBuilder sb = new StringBuilder(st + k);
+			sb.append("\r\n");
+			
+			out.println(sb);
 		}
 	}
 

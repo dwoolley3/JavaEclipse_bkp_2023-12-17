@@ -3,13 +3,13 @@ import java.math.*;  //BigInteger, BigDecimal
 import java.util.*;  //StringTokenizer, ArrayList
 
 
-public class R785_Div2_D
+public class Ed_2022_R134_E
 {	
 	FastReader in;
 	PrintWriter out;
 	
 	public static void main(String[] args)  {
-		new R785_Div2_D().run();
+		new Ed_2022_R134_E().run();
 	}
 	
 	void run()

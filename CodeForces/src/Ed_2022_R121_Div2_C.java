@@ -22,6 +22,11 @@ public class Ed_2022_R121_Div2_C
 	
 	void solve()
 	{
+		out.println(System.currentTimeMillis()/1000);
+		String timeString = System.currentTimeMillis()/1000 + ""; // 1659877427
+		String sha512Hex = "654321/user.friends?apiKey=986abe046df92a7279940006c48f478e98077aef&onlyOnline=true&time="+timeString+"#5cfda8adebdf0355d7b51288811813e79ac18dc0";
+		
+		String s = sha512Hex; 
 		int t = in.nextInt();
 		for (int T = 0; T < t; T++) {
 			int n = in.nextInt();

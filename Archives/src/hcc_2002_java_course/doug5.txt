@@ -1,0 +1,3 @@
+principal=1000.0
+apr=0.15
+nmonths=24

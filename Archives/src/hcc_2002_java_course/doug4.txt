@@ -1,0 +1,3 @@
+principal=111.0
+apr=0.0222
+nmonths=333
